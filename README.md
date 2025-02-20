@@ -3,7 +3,7 @@
 ## Wymagania
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-Dla macOS/Linux należy zainstalować dodatkowe zależności (w Windows brak dodatkowych wymagań):
+Dla macOS/Linux należy zainstalować dodatkowe zależności (dla Windows brak dodatkowych wymagań):
 
 ### macOS
 ```sh
