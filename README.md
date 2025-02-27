@@ -33,7 +33,7 @@ View > Command Palette > Extensions: Install Extensions
 1. Sklonuj to repozytorium i otwórz w VSCode:
 ```sh
 cd ~/
-git clone git@github.com:krolikbrunatny/van-binh-robot.git
+git clone https://github.com/krolikbrunatny/van-binh-robot.git
 ```
 
 2. Zbuduj projekt:
