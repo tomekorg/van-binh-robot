@@ -1,9 +1,12 @@
 #include "Arduino.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include "driver/gpio.h"
+#include "Wifi.h"
+#include "wifi_setup.h"
 
 extern "C" void app_main()
 {
     initArduino();
-    pinMode(4, OUTPUT);
-    digitalWrite(4, HIGH);
-    // Do your own thing
+    setup_wifi_ap();
 }
