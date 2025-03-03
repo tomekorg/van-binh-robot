@@ -414,15 +414,15 @@ dependencies:
       type: idf
     version: 5.3.2
   joltwallet/littlefs:
-    component_hash: add3caf39a265868f70e55f17e8bfb401f200e45a601dc392832e7ac2c1487bc
+    component_hash: 8dd83825446dfdc7c22bcfa363731d24afc7bd0c8b23ede99359112cfe239e9d
     dependencies:
     - name: idf
       require: private
-      version: '>=4.3'
+      version: '>=5.0'
     source:
       registry_url: https://components.espressif.com
       type: service
-    version: 1.16.4
+    version: 1.18.1
 direct_dependencies:
 - espressif/arduino-esp32
 - idf
