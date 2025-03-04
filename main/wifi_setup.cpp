@@ -3,7 +3,7 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "driver/gpio.h"
-#include "Wifi.h"
+#include "WiFi.h"
 
 void setup_wifi_ap()
 {
