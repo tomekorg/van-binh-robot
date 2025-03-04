@@ -3,48 +3,13 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>tomek</title>
   </head>
   <body>
-    <button id="start">guziczek</button>
-    <script src="index.js"></script>
-
+    <button id="start">Start</button>
     <div id="joystick-container"></div>
-
-    <script src="./nipplejs.js"></script>
-    <script>
-      var options = {
-          zone: document.getElementById('joystick-container'),
-          color: 'red',
-          size: Integer,
-          threshold: Float,               // before triggering a directional event
-          fadeTime: Integer,              // transition time
-          multitouch: Boolean,
-          maxNumberOfNipples: Number,     // when multitouch, what is too many?
-          dataOnly: Boolean,              // no dom element whatsoever
-          position: Object,               // preset position for 'static' mode
-          mode: 'static',
-          restJoystick: Boolean|Object,   // Re-center joystick on rest state
-          restOpacity: Number,            // opacity when not 'dynamic' and rested
-          lockX: Boolean,                 // only move on the X axis
-          lockY: Boolean,                 // only move on the Y axis
-          catchDistance: Number,          // distance to recycle previous joystick in
-                                          // 'semi' mode
-          shape: String,                  // 'circle' or 'square'
-          dynamicPage: Boolean,           // Enable if the page has dynamically visible elements
-          follow: Boolean,                // Makes the joystick follow the thumbstick
-      };
-
-      var manager = nipplejs.create(options);
-    </script>
-
-    <style>
-      #joystick-container {
-          width: 300px;
-          height: 300px;
-          position: relative;
-      }
-    </style>
+    <script src="index.js" type="module"></script>
   </body>
 </html>
 
