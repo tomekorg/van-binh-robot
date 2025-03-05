@@ -3,10 +3,11 @@
     "nipplejs": "^0.10.2"
   },
   "devDependencies": {
-    "parcel": "^2.13.3"
+    "parcel": "^2.13.3",
+    "web-resource-inliner": "^7.0.0"
   },
   "scripts": {
     "start": "parcel serve index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html && node post-build.js"
   }
 }
