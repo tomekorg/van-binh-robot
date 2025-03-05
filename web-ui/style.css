@@ -1,5 +1,5 @@
-#joystick-container {
-          width: 300px;
-          height: 300px;
-          position: relative;
-      }
+#joystick {
+  width: 300px;
+  height: 300px;
+  position: relative;
+}
