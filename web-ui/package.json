@@ -6,7 +6,7 @@
     "parcel": "^2.13.3"
   },
   "scripts": {
-    "start": "parcel index.html",
+    "start": "parcel serve index.html",
     "build": "parcel build"
-  } 
+  }
 }
