@@ -1,9 +1,9 @@
 # tomek
 
-## Wymagania
+## Requirements
 - [Visual Studio Code](https://code.visualstudio.com/)
 
-Dla macOS/Linux należy zainstalować dodatkowe zależności (dla Windows brak dodatkowych wymagań):
+For macOS/Linux additional dependencies must be installed (no additional requirements for Windows):
 
 ### macOS
 ```sh
@@ -15,28 +15,28 @@ brew install cmake ninja dfu-util ccache
 sudo apt-get install git wget flex bison gperf python3 python3-pip python3-venv cmake ninja-build ccache libffi-dev libssl-dev dfu-util libusb-1.0-0
 ```
 
-[Oficjalna dokumentacja w razie potrzeby (tylko Step 1).](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#step-1-install-prerequisites)
+[Official documentation for reference (only Step 1).](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/get-started/linux-macos-setup.html#step-1-install-prerequisites)
 
-## Instalacja ESP-IDF
+## Installing ESP-IDF
 
-1. Zainstaluj rozszerzenie ESP-IDF w VSCode:
+1. Install the ESP-IDF extension in VSCode:
 ```sh
 View > Command Palette > Extensions: Install Extensions
 ```
-2. Skonfiguruj je, wybierając opcję "Express" setup mode.
-3. Wskaż wersję ESP-IDF v5.3.2.
+2. Configure it by selecting the "Express" setup mode.
+3. Select version ESP-IDF v5.3.2.
 
-[Oficjalna dokumentacja w razie potrzeby.](https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/installation.html)
+[Official documentation for reference.](https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/installation.html)
 
-## Import i budowa projektu
+## Importing and building the project
 
-1. Sklonuj to repozytorium i otwórz w VSCode:
+1. Clone this repository and open it in VSCode:
 ```sh
 cd ~/
 git clone https://github.com/krolikbrunatny/van-binh-robot.git
 ```
 
-2. Zbuduj projekt:
+2. Build your project:
 ```sh
 View > Command Palette > ESP-IDF: Build Your Project
 ```
