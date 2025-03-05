@@ -6,8 +6,9 @@ document.getElementById("start").addEventListener("click", function () {
 
 let options = {
   zone: document.getElementById("joystick"),
-  color: "red",
-  mode: "static",
+  color: "#ff4081",
+  position: { left: "50%", top: "50%" },
+  mode: "dynamic",
 };
 
 let manager = nipplejs.create(options);
