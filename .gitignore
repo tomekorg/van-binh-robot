@@ -2,3 +2,7 @@ build/
 managed_components/
 sdkconfig
 .vscode
+node_modules
+dist
+.parcel-cache
+

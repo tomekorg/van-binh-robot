@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "nipplejs": "^0.10.2"
+  },
+  "devDependencies": {
+    "parcel": "^2.13.3"
+  },
+  "scripts": {
+    "start": "parcel serve index.html",
+    "build": "parcel build index.html"
+  }
+}
