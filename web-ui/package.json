@@ -7,6 +7,6 @@
   },
   "scripts": {
     "start": "parcel serve index.html",
-    "build": "parcel build"
+    "build": "parcel build index.html"
   }
 }
