@@ -1,3 +1,4 @@
+import "./style.css";
 import nipplejs from "nipplejs";
 
 document.getElementById("start").addEventListener("click", function () {
