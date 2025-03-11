@@ -11,4 +11,10 @@ let options = {
   mode: "dynamic",
 };
 
-let manager = nipplejs.create(options);
+let joystick = nipplejs.create(options);
+
+joystick.on('move', (evt, data) => {
+  if (data.vector) {
+      console.log(`X: ${data.vector.x}, Y: ${data.vector.y}`);
+  }
+});
