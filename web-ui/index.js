@@ -1,3 +1,4 @@
+import "./style.css";
 import nipplejs from "nipplejs";
 
 document.getElementById("start").addEventListener("click", function () {
@@ -6,8 +7,8 @@ document.getElementById("start").addEventListener("click", function () {
 
 let options = {
   zone: document.getElementById("joystick"),
-  color: "red",
-  mode: "static",
+  color: "#ff4081",
+  mode: "dynamic",
 };
 
 let manager = nipplejs.create(options);
