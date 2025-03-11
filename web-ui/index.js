@@ -8,7 +8,6 @@ document.getElementById("start").addEventListener("click", function () {
 let options = {
   zone: document.getElementById("joystick"),
   color: "#ff4081",
-  position: { left: "50%", top: "50%" },
   mode: "dynamic",
 };
 
