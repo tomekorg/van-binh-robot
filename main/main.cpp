@@ -20,7 +20,7 @@ extern "C" void app_main()
     setup_wifi_ap();
 
     server.on("/", HTTP_GET, handleRoot);
-    ESP_LOGI("WEB_SERVER", "GET / handler registered")
+    ESP_LOGI("WEB_SERVER", "GET / handler registered");
 
     server.begin();
     ESP_LOGI("WEB_SERVER", "Web server started on port 80");
