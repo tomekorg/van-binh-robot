@@ -26,7 +26,7 @@ void setup_wifi_ap()
     }
 
     ESP_LOGI("AP_SETUP", "Starting Access Point ... ");
-    bool is_ap_working = WiFi.softAP(ssid, password);
+    bool is_ap_working = WiFi.softAP(ssid, password, 1, 0, 4, false, WIFI_AUTH_WPA_WPA2_PSK);
     if (is_ap_working == true)
     {
         ESP_LOGI("AP_SETUP", "AP is working!");
