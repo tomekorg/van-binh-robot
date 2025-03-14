@@ -1,12 +1,17 @@
 #include "http_server.h"
-#include "Arduino.h"
 #include <ESPAsyncWebServer.h>
+#include "ws_queue.h"
 
 AsyncWebServer server(80);
 AsyncWebSocket ws("/ws");
 
 static const char *TAG = "HTTP/WS SERVER";
 
+// Ta funkcja robi kilka rzeczy:
+// 1. Odbiera requesty przez websocket, np. gdy ruszamy joystickiem.
+// 2. Loguje informacje do terminala za pomoca ESP_LOGI itd.
+// 3. Przetwarza odebrane dane: zamienia je z tekstu na obiekt JSON.
+// 4. Wysyła przetworzone dane do kolejki, aby mogły być dalej użyte w main.cpp.
 void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client,
                AwsEventType type, void *arg, uint8_t *data, size_t len) {
   switch (type) {
@@ -19,18 +24,31 @@ void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client,
     break;
   case WS_EVT_DATA:
     ESP_LOGI(TAG, "WebSocket data received: %u bytes", len);
+    if (len > 0) {
+      WSMessage msg;
+      DeserializationError error = deserializeJson(msg.json, data, len);
+      if (error) {
+        ESP_LOGE(TAG, "Failed to parse JSON: %s", error.c_str());
+      } else {
+        xQueueSend(wsInQueue, &msg, portMAX_DELAY);
+      }
+    }
     break;
   default:
     break;
   }
 }
 
+// Obsługuje requesty HTTP GET skierowane do "/".
+// Narazie odpowiada na kazdy request tekstem "hello!".
+// Docelowo bedzie wysylac strone HTML.
 void handleRoot(AsyncWebServerRequest *request) {
   ESP_LOGI("WEB_SERVER", "Received GET request on /");
   request->send(200, "text/plain", "hello!");
 }
 
-void init_http_server() {
+// Uruchamia serwer HTTP oraz serwer WebSocket.
+void initHttpServer() {
   server.on("/", HTTP_GET, handleRoot);
   ESP_LOGI(TAG, "GET / handler registered");
 
