@@ -1,4 +1,4 @@
 idf_component_register(
-    SRCS "http_server.cpp" "wifi_setup.cpp" "main.cpp"
-    INCLUDE_DIRS ""
+    SRCS "src/ws_queue.cpp" "src/http_server.cpp" "src/wifi_setup.cpp" "src/main.cpp"
+    INCLUDE_DIRS "include"
 )
