@@ -4,9 +4,11 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/queue.h"
 #include <ArduinoJson.h>
+#include <memory>
 
 struct WSMessage {
-  JsonDocument json;
+    JsonDocument json;
+    WSMessage() : json(JsonDocument()) { }
 };
 
 void initWsQueues();
