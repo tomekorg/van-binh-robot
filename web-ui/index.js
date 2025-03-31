@@ -29,11 +29,11 @@ let options = {
 let joystick = nipplejs.create(options);
 
 let lastVector = { x: 0, y: 0 }; // Store the last known joystick position
-let intervalId = null; // Store the interval ID
+let animationFrameId = null; // Store the requestAnimationFrame ID
+let isJoystickActive = false; // Track if the joystick is active
 
-joystick.on('start', () => {
-  // Start sending events periodically when the joystick becomes active
-  intervalId = setInterval(() => {
+function sendJoystickData() {
+  if (isJoystickActive) {
     const message = {
       type: "joystick",
       payload: {
@@ -42,7 +42,14 @@ joystick.on('start', () => {
       }
     };
     socket.send(JSON.stringify(message));
-  }, 100); // Send every 100ms (adjust as needed)
+    animationFrameId = requestAnimationFrame(sendJoystickData); // Schedule the next frame
+  }
+}
+
+joystick.on('start', () => {
+  // Start sending events when the joystick becomes active
+  isJoystickActive = true;
+  sendJoystickData();
 });
 
 joystick.on('move', (evt, data) => {
@@ -54,6 +61,9 @@ joystick.on('move', (evt, data) => {
 
 joystick.on('end', () => {
   // Stop sending events when the joystick is released
-  clearInterval(intervalId);
-  intervalId = null;
+  isJoystickActive = false;
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+  }
 });
