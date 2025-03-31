@@ -2,6 +2,8 @@
 #include "wifi_setup.h"
 #include "http_server.h"
 #include "ws_queue.h"
+#include "driver/gpio.h"
+#define LED_PIN GPIO_NUM_2
 
 extern "C" void app_main()
 {
@@ -9,6 +11,20 @@ extern "C" void app_main()
     initWsQueues();
     initWifiAp();
     initHttpServer();
+
+    // gpio_reset_pin(LED_PIN);
+    // gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
+
+    // while(true) {
+    //     gpio_set_level(LED_PIN, 1);
+    //     vTaskDelay(pdMS_TO_TICKS(500));
+
+    //     gpio_set_level(LED_PIN, 0);
+    //     vTaskDelay(pdMS_TO_TICKS(500));
+    // }
+
+    gpio_reset_pin(LED_PIN);
+    gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
 
     // Tutaj jest dla Was przygotowana petla, w ktorej ma sie odbywac ruszanie silnikami.
     while (true) {
@@ -21,7 +37,13 @@ extern "C" void app_main()
             int y = (msg->json)["payload"]["y"];
             ESP_LOGI("main", "type: %s, x: %d, y: %d", type, x, y);
 
+            if (x>0) {
+                gpio_set_level(LED_PIN, 1);
+            }
+
+
             delete msg;
         }
+        else gpio_set_level(LED_PIN, 0);
     }
 }
