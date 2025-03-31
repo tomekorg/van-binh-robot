@@ -28,18 +28,32 @@ let options = {
 
 let joystick = nipplejs.create(options);
 
-joystick.on('move', (evt, data) => {
-  if (data.vector) {
-    console.log(`X: ${data.vector.x}, Y: ${data.vector.y}`);
+let lastVector = { x: 0, y: 0 }; // Store the last known joystick position
+let intervalId = null; // Store the interval ID
 
+joystick.on('start', () => {
+  // Start sending events periodically when the joystick becomes active
+  intervalId = setInterval(() => {
     const message = {
       type: "joystick",
       payload: {
-        x: Math.round(data.vector.x * 1000),
-        y: Math.round(data.vector.y * 1000),
+        x: Math.round(lastVector.x * 1000),
+        y: Math.round(lastVector.y * 1000),
       }
-    }
-
+    };
     socket.send(JSON.stringify(message));
+  }, 100); // Send every 100ms (adjust as needed)
+});
+
+joystick.on('move', (evt, data) => {
+  if (data.vector) {
+    lastVector = { x: data.vector.x, y: data.vector.y }; // Update the last known position
+    console.log(`X: ${lastVector.x}, Y: ${lastVector.y}`);
   }
+});
+
+joystick.on('end', () => {
+  // Stop sending events when the joystick is released
+  clearInterval(intervalId);
+  intervalId = null;
 });
