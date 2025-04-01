@@ -7,7 +7,7 @@
     "web-resource-inliner": "^7.0.0"
   },
   "scripts": {
-    "start": "parcel serve index.html",
+    "start": "DEVELOPMENT=true parcel serve index.html",
     "build": "parcel build index.html && node post-build.js"
   }
 }
