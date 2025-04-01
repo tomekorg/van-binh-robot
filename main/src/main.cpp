@@ -23,7 +23,8 @@ extern "C" void app_main()
     gpio_reset_pin(LED_PIN);
     gpio_set_direction(LED_PIN, GPIO_MODE_OUTPUT);
 
-    clock_t start_time = clock();
+    int64_t start_time = esp_timer_get_time();
+    bool led_on = false;
 
     // Tutaj jest dla Was przygotowana petla, w ktorej ma sie odbywac ruszanie silnikami.
     while (true) {
@@ -37,39 +38,24 @@ extern "C" void app_main()
             int y = (msg->json)["payload"]["y"];
             ESP_LOGI("main", "type: %s, x: %d, y: %d", type, x, y);
 
-            float r = sqrt(x*x + y*y);
-
-
-            
-            // clock_t start_time = clock();
-            // gpio_set_level(LED_PIN, 1);
-    
-            // while(true) {
-            //     clock_t now = clock();
-            //     double elapsed_ms = (double)(now - start_time) * 1000.0 / CLOCKS_PER_SEC;
-                
-            //     if (elapsed_ms > 1000 - r) {
-            //         gpio_set_level(LED_PIN, 0);
-            //         clock_t new_now = clock();
-
-            //         break;
-            //     }
-            // }
+            float r = sqrt(x * x + y * y);
 
             delete msg;
         }
-        int period = 1000;
-        clock_t now = clock();
-        double elapsed_ms = (double)((now - start_time) * 1000) / CLOCKS_PER_SEC;
-        if (elapsed_ms >= period) {
-            int pin_state = gpio_get_level(LED_PIN);
-            if (pin_state == 0) {
-                gpio_set_level(LED_PIN, 1);
+
+        int64_t period = 1000000;
+        int64_t now = esp_timer_get_time();
+        if (now - start_time >= period) {
+            if (led_on) {
+                gpio_set_level(LED_PIN, 0);
+                led_on = false;
             }
             else {
-                gpio_set_level(LED_PIN, 0);
+                gpio_set_level(LED_PIN, 1);
+                led_on = true;
             }
             start_time = now;
         }
+        vTaskDelay(pdMS_TO_TICKS(10));
     }
 }
