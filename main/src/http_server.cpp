@@ -30,7 +30,7 @@ void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client,
     ESP_LOGD(TAG, "WebSocket data received: %u bytes", len);
     if (len > 0)
     {
-      WSMessage* msg = new WSMessage();
+      WSMessage *msg = new WSMessage();
       DeserializationError error = deserializeJson(msg->json, data, len);
       if (error)
       {
@@ -41,7 +41,6 @@ void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client,
         if (xQueueSend(wsInQueue, &msg, pdMS_TO_TICKS(100)) != pdPASS)
         {
           ESP_LOGW("ws_queue", "Failed to send message to the queue");
-          // Handle the error: possibly retry or log the occurrence.
         }
       }
     }
@@ -56,7 +55,15 @@ void onWsEvent(AsyncWebSocket *server, AsyncWebSocketClient *client,
 // Docelowo bedzie wysylac strone HTML.
 void handleRoot(AsyncWebServerRequest *request)
 {
-  ESP_LOGI("WEB_SERVER", "Received GET request on /");
+  ESP_LOGI(TAG, "Received GET request on /");
+  AsyncWebServerResponse *response = request->beginResponse(200, "text/html", (const char *)bundle_html);
+
+  // Ask browser to revalidate to make sure they get latest web-ui
+  response->addHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  response->addHeader("Pragma", "no-cache");
+  response->addHeader("Expires", "-1");
+
+  request->send(response);
   request->send(200, "text/html", (const char *)bundle_html);
 }
 
