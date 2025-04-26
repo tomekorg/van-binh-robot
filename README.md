@@ -24,19 +24,30 @@ sudo apt-get install git wget flex bison gperf python3 python3-pip python3-venv 
 View > Command Palette > Extensions: Install Extensions
 ```
 2. Configure it by selecting the "Express" setup mode.
-3. Select version ESP-IDF v5.3.2.
+3. Select version ESP-IDF v5.3.3.
 
 [Official documentation for reference.](https://docs.espressif.com/projects/vscode-esp-idf-extension/en/latest/installation.html)
 
 ## Importing and building the project
 
-1. Clone this repository and open it in VSCode:
+1. Clone this repository:
 ```sh
-cd ~/
-git clone https://github.com/krolikbrunatny/van-binh-robot.git
+git clone https://github.com/tomekorg/van-binh-robot
 ```
 
-2. Build your project:
-```sh
+2. Open VSCode and import the project using ESP-IDF extension:
+```
+View > Command Palette > ESP-IDF: Import ESP-IDF Project
+```
+
+3. Open the imported project in VSCode and build it:
+```
 View > Command Palette > ESP-IDF: Build Your Project
+```
+
+4. Select IntelliSense Configuration:
+```
+View > Command Palette > C/C++ Select IntelliSense Configuration...
+
+Select ${workspaceFolder}/build/compile_commands.json
 ```
