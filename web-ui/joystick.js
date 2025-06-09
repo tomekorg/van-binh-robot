@@ -10,6 +10,17 @@ export function initJoystick(socket) {
     zone: document.getElementById("joystick"),
     color: "#ff4081",
     mode: "dynamic",
+    size: 150, // Increased size of the joystick handle
+  });
+
+  joystick.on("start", () => {
+    joystickActive = true;
+    // Send a message immediately on start to switch to manual mode
+    const message = {
+      type: "joystick",
+      payload: { x: 0, y: 0 }, // Initial position
+    };
+    socket.send(JSON.stringify(message));
   });
 
   joystick.on("move", (_, data) => {
@@ -25,6 +36,12 @@ export function initJoystick(socket) {
   joystick.on("end", () => {
     joystickActive = false;
     joystickData = { x: 0, y: 0 };
+    // Send a final message to stop the motors
+    const message = {
+      type: "joystick",
+      payload: joystickData,
+    };
+    socket.send(JSON.stringify(message));
   });
 
   function sendJoystickData() {

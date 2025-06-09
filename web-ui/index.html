@@ -9,7 +9,67 @@
     <title>tomek</title>
   </head>
   <body>
-    <button id="start">START</button>
+    <div id="top-bar">
+      <div id="controls">
+        <button id="calibrate">Calibrate</button>
+        <button id="start">START</button>
+      </div>
+      <div id="pid-controls">
+        <div class="pid-input">
+          <label for="kp">Kp:</label>
+          <input type="number" id="kp" step="0.05" value="0.6" />
+        </div>
+        <div class="pid-input">
+          <label for="ki">Ki:</label>
+          <input type="number" id="ki" step="0.001" value="0.0" />
+        </div>
+        <div class="pid-input">
+          <label for="kd">Kd:</label>
+          <input type="number" id="kd" step="0.05" value="0.2" />
+        </div>
+        <div class="pid-input">
+          <label for="baseSpeed">Base Speed:</label>
+          <input type="number" id="baseSpeed" step="10" value="250" />
+        </div>
+        <div class="pid-input">
+          <label for="maxMotorSpeed">Max Speed:</label>
+          <input type="number" id="maxMotorSpeed" step="10" value="350" />
+        </div>
+        <div class="pid-input">
+          <label for="minAutoSpeed">Min Auto Speed:</label>
+          <input type="number" id="minAutoSpeed" step="10" value="150" />
+        </div>
+        <div class="pid-input">
+          <label for="ledcFrequency">PWM Freq (Hz):</label>
+          <input type="number" id="ledcFrequency" step="100" value="4200" />
+        </div>
+        <div class="pid-input">
+          <label for="integralLimit">Integral Limit:</label>
+          <input type="number" id="integralLimit" step="100" value="3000" />
+        </div>
+        <div class="pid-input">
+          <label for="turnSensitivity">Turn Sensitivity:</label>
+          <input type="number" id="turnSensitivity" step="0.01" value="0.15" />
+        </div>
+        <div class="pid-input">
+          <label for="sharpTurnThreshold">Sharp Turn Thresh:</label>
+          <input type="number" id="sharpTurnThreshold" step="50" value="2000" />
+        </div>
+        <div class="pid-input">
+          <label for="sharpTurnKp">Sharp Turn Kp:</label>
+          <input type="number" id="sharpTurnKp" step="0.05" value="0.4" />
+        </div>
+        <button id="update-params">Update Params</button>
+      </div>
+      <div id="auto-stats" class="hidden">
+        <p>Position: <span id="pos-val">N/A</span></p>
+        <p>Error: <span id="err-val">N/A</span></p>
+        <p>Correction: <span id="corr-val">N/A</span></p>
+        <p>L Speed: <span id="ls-val">N/A</span> | R Speed: <span id="rs-val">N/A</span></p>
+      </div>
+      <div id="sensors-container"></div>
+    </div>
+    <div id="logs-container"></div>
     <div id="joystick"></div>
     <script src="index.js" type="module"></script>
   </body>
