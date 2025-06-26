@@ -35,7 +35,7 @@ We are a team of five students. Initially, we agreed on consensus-based decision
 
 We established a few internal rules, the most prominent being that we operated on a voluntary basis - everything we did was for fun and learning. In other words, no one could require work from anyone, and we were all equal, regardless of the work completed.
 
-We started with a git repository on GitHub and and kanban board for tracking issues.
+We started with a git repository on GitHub and kanban board for tracking issues.
 
 We held a three-hour meeting weekly where we went over the board, shared progress, and made decisions. This system worked for a while until we got busy with other university work and life dramas. We had selected the hardware components, printed an early version of the chassis, and written most of the code for the web UI and remote control. However, we hadn't touched the PID controller at all. At this point, we got bored and entered a procrastination phase.
 
