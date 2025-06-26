@@ -1,6 +1,6 @@
 # tomek
 
-<img src="https://raw.githubusercontent.com/tomekorg/van-binh-robot/refs/heads/main/docs/tomek.jpg" alt='line follower robot "tomek"' width="300">
+<img src="https://raw.githubusercontent.com/tomekorg/van-binh-robot/refs/heads/main/docs/tomek.jpg" alt='line follower robot "tomek"' width="500">
 
 ## What is this?
 
