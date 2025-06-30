@@ -112,6 +112,6 @@ We each reflected on one thing we learned and enjoyed from this experience. Each
 
 > For me, the journey was about starting from scratch. I appreciated learning the entire workflow - from electronics and wiring to coding and using git. I like that we managed to build something we previously knew nothing about.
 
-<team photo, yet to be approved>
+<br />
 
-<!-- <img src="docs/team.jpg" alt="team photo" width="500"> -->
+<img src="https://raw.githubusercontent.com/tomekorg/van-binh-robot/refs/heads/main/docs/team.jpg" alt="team">
